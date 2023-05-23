@@ -65,4 +65,4 @@ algorithmnblues92@gmail.com
 
 ### Deployed Link:
 
-website link
+https://algorithmnblues92.github.io/project_02/
