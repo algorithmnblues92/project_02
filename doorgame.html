@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Login</title>
+        <!-- the form awesome library is used to add icons to our form -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <!-- include the stylesheet file -->
+        <link href="/style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+  
+  <nav>
+   <div id="logoContainer">
+    Door Game
+   </div>
+   <div id="middleSpace">
+
+   </div>
+   <div id="linksContainer">
+    <a id="logoutBtn" href="http://localhost:3001">Log Out</a>
+   </div>
+  </nav>
+
+<div id="mainBodyContainer">
+<h1>Door Memory Game</h1>
+
+<div id="gameWindow">
+ <div id="doorsContainer">
+  <div id="doorOneContainer">
+   <div id="doorOne" style="background-image: url(https://res.cloudinary.com/rustica/image/upload/w_800/v1675189188/ALL%20DOORS%20FUNCTIONS%20%2B%20SUPPORT/ALL%20EXTERIOR%20DOORS/CLASSIC%20and%20DESIGNER/LOCUST_R1.png); background-size: 100%; background-repeat: no-repeat;"></div>
+  </div>
+  <div id="doorTwoContainer">
+      <div id="doorTwo" style="background-image: url(https://res.cloudinary.com/rustica/image/upload/w_800/v1616422468/EXTERIOR%20FRENCH%20DOORS/NEW%20EXTERIOR/manor-double-front-door.jpg); background-size: 100%; background-repeat: no-repeat;"></div>
+  </div>
+  <div id="doorThreeContainer">
+      <div id="doorThree" style="background-image: url(https://res.cloudinary.com/rustica/image/upload/w_800/v1573495768/Slab%20Doors/Full_X_Slab.jpg); background-size: 100%; background-repeat: no-repeat;"></div>
+  </div>
+ </div>
+ <div id="iconContainer">
+    <div id="timerNextContainer">
+    <div id="nextIconContainer">Next Icon</div>
+    <div id="timerContainer">Timer</div>
+    </div>
+    <div id="iconOneContainer"></div>
+    <div id="iconTwoContainer"></div>
+    <div id="iconThreeContainer"></div>
+ </div>
+ <div id="buttonContainer">
+    <button id="btnOne" onClick="firstBtn()">Door One</button>
+    <button id="btnTwo" onClick="secondBtn()">Door Two</button>
+    <button id="btnThree" onClick="thirdBtn()">Door Three</button>
+ </div>
+</div>
+
+
+<script>
+
+    var iconColumnOne = document.getElementById('iconOneContainer');
+    var iconColumnTwo = document.getElementById('iconTwoContainer');
+    var iconColumnThree = document.getElementById('iconThreeContainer');
+    var nextIconContainer = document.getElementById('nextIconContainer');
+    var timerContainer = document.getElementById('timerContainer');
+    var highScoreContainer = document.getElementById('middleSpace');
+
+    var roundNumber = 1;
+    var doorVar = 0;
+    var playerScore = 0;
+
+    var winningArray = [];
+    var columnOneRNGArray = [];
+        var columnTwoRNGArray = [];
+            var columnThreeRNGArray = [];
+
+ function randomNumber(max) { 
+  return (Math.floor(Math.random() * max));
+ };
+
+ var emojiArray = [
+    "☀️",
+    "🌻",
+    "😡",
+    "🥶",
+    "🐰",
+    "🔥",
+    "🌩️",
+    "🌈",
+    "❄️",
+    "🍏",
+    "🍺",
+    "🚀",
+    "❤️",
+    "💚",
+    "🏈",
+    "💰",
+    "⚔️",
+    "🙃",
+    "😎",
+    "👽"
+ ];
+
+function nextIconGen () {
+
+    if (roundNumber < 9) {
+
+    var nextIconPiece = document.createElement('div');
+    var nextIconGen = emojiArray[randomNumber(19)];
+    winningArray.push(nextIconGen);
+    console.log("icon :" + winningArray);
+    console.log("length :" + winningArray.length);
+    nextIconPiece.setAttribute('id', 'nextIcon');
+    nextIconPiece.innerHTML = nextIconGen;
+    nextIconPiece.style.fontSize = '50px';
+    nextIconContainer.appendChild(nextIconPiece);
+
+    timerCounter();
+    } else {
+        console.log("game over")
+        console.log("Your Score is : " + playerScore);
+        highScoreContainer.innerHTML = "   Your Score is :" + playerScore;
+    }
+
+}
+
+function timerCounter () {
+    var timerVar = 30;
+    var timer = setInterval(function timerInterval() {
+        timerContainer.innerHTML = timerVar;
+        timerVar--;
+
+        if(timerVar == 27) {
+        nextIconContainer.removeChild(document.getElementById('nextIcon'));          
+        }
+
+        if(timerVar == -1) {
+            clearInterval(timer);
+            console.log("timer ended")
+            // nextIconContainer.removeChild(document.getElementById('nextIcon'));
+            rngPickColumn = randomNumber(3) + 1;
+            console.log(rngPickColumn);
+
+            if(rngPickColumn == 1) {
+                console.log('column 1 is chosen');
+                iconColumnGenRNGTwo();
+                iconColumnGenRNGThree();
+                winningIconOneColumn();
+                columnOneRNGArray.push(winningArray[winningArray.length - 1]);
+                console.log(columnOneRNGArray);
+            };
+
+            if(rngPickColumn == 2) {
+                console.log('column 2 is chosen');
+                iconColumnGenRNGOne();
+                iconColumnGenRNGThree();
+                winningIconTwoColumn();
+                columnTwoRNGArray.push(winningArray[winningArray.length - 1]);
+                console.log(columnTwoRNGArray);
+            };
+
+            if(rngPickColumn == 3) {
+                console.log('column 3 is chosen');
+                iconColumnGenRNGOne();
+                iconColumnGenRNGTwo();
+                winningIconThreeColumn();
+                columnThreeRNGArray.push(winningArray[winningArray.length - 1]);
+                console.log(columnThreeRNGArray);
+            };
+
+        }
+    }, 1000);
+};
+
+
+function winningIconOneColumn () {
+
+    // for(i=0; i<winningArray.length; i++) {
+
+    var iconPiece = document.createElement('div');
+    // iconPiece.setAttribute('id', 'columnOne' + i + 'piece');
+    iconPiece.setAttribute('id', 'columnOnepiece');
+    iconPiece.innerHTML = winningArray[0];
+    iconPiece.style.fontSize = "30px";
+    iconColumnOne.appendChild(iconPiece);
+
+// };
+};
+
+function winningIconTwoColumn () {
+
+    // for(i=0; i<winningArray.length; i++) {
+
+    var iconPiece = document.createElement('div');
+    // iconPiece.setAttribute('id', 'columnTwo' + i + 'piece');
+    iconPiece.setAttribute('id', 'columnTwopiece');
+    iconPiece.innerHTML = winningArray[0];
+    iconPiece.style.fontSize = "30px";
+    iconColumnTwo.appendChild(iconPiece);
+
+// };
+};
+
+function winningIconThreeColumn () {
+
+    // for(i=0; i<winningArray.length; i++) {
+
+    var iconPiece = document.createElement('div');
+    // iconPiece.setAttribute('id', 'columnThree' + i + 'piece');
+    iconPiece.setAttribute('id', 'columnThreepiece');
+    iconPiece.innerHTML = winningArray[0];
+    iconPiece.style.fontSize = "30px";
+    iconColumnThree.appendChild(iconPiece);
+
+// };
+};
+
+// function iconColumnGen () {
+
+// for(i=0; i<roundNumber; i++) {
+
+// var iconPiece = document.createElement('div');
+// iconPiece.setAttribute('id', 'column' + i + 'piece');
+// iconPiece.innerHTML = emojiArray[randomNumber(19)];
+// iconPiece.style.fontSize = "30px";
+// iconColumnOne.appendChild(iconPiece);
+
+// };
+
+// };
+
+function iconColumnGenRNGOne () {
+
+// for(i=0; i<roundNumber; i++) {
+
+var randomV = randomNumber(19);
+var emojiRNG = emojiArray[randomV];
+
+var iconPieceOne = document.createElement('div');
+// iconPieceOne.setAttribute('id', 'columnOne' + i + 'piece');
+iconPieceOne.setAttribute('id', 'columnOnepiece');
+iconPieceOne.innerHTML = emojiRNG;
+columnOneRNGArray.push(emojiRNG);
+console.log(columnOneRNGArray);
+iconPieceOne.style.fontSize = "30px";
+iconColumnOne.appendChild(iconPieceOne);
+
+// };
+};
+
+function iconColumnGenRNGTwo () {
+
+// for(i=0; i<roundNumber; i++) {
+
+var randomV = randomNumber(19);
+var emojiRNG = emojiArray[randomV];
+
+var iconPieceTwo = document.createElement('div');
+// iconPieceTwo.setAttribute('id', 'columnTwo' + i + 'piece');
+iconPieceTwo.setAttribute('id', 'columnTwopiece');
+iconPieceTwo.innerHTML = emojiRNG;
+columnTwoRNGArray.push(emojiRNG);
+console.log(columnTwoRNGArray);
+iconPieceTwo.style.fontSize = "30px";
+iconColumnTwo.appendChild(iconPieceTwo);
+
+// };
+};
+
+function iconColumnGenRNGThree () {
+
+// for(i=0; i<roundNumber; i++) {
+
+var randomV = randomNumber(19);
+var emojiRNG = emojiArray[randomV];
+
+var iconPieceThree = document.createElement('div');
+// iconPieceThree.setAttribute('id', 'columnThree' + i + 'piece');
+iconPieceThree.setAttribute('id', 'columnThreepiece');
+iconPieceThree.innerHTML = emojiRNG;
+columnThreeRNGArray.push(emojiRNG);
+console.log(columnThreeRNGArray);
+iconPieceThree.style.fontSize = "30px";
+iconColumnThree.appendChild(iconPieceThree);
+
+// };
+};
+//round number is for the other two doors that isn't chosen by rng to have the winning array
+
+function firstBtn () {
+    console.log("firstBtn clicked");
+    console.log("round number :" + roundNumber);
+    // if (winningArray[winningArray.length - 1] == columnOneRNGArray[roundNumber - 1]) {
+    if (winningArray[0] == columnOneRNGArray[0]) {
+        console.log("You chose the correct door!");
+        roundNumber++;
+        playerScore++;
+        columnOneRNGArray = [];
+        columnTwoRNGArray = [];
+        columnThreeRNGArray = [];
+        winningArray = [];
+        nextIconGen();        
+    } else {
+        console.log('Wrong Answer');
+        roundNumber++;
+        columnOneRNGArray = [];
+        columnTwoRNGArray = [];
+        columnThreeRNGArray = [];
+        winningArray = [];
+        nextIconGen();
+    };
+};
+
+function secondBtn () {
+    console.log("secondBtn clicked");
+    console.log("round number :" + roundNumber);
+    // if (winningArray[winningArray.length - 1] == columnTwoRNGArray[roundNumber - 1]) {
+    if (winningArray[0] == columnTwoRNGArray[0]) {
+        console.log("You chose the correct door!");
+        roundNumber++;
+        playerScore++;
+        columnOneRNGArray = [];
+        columnTwoRNGArray = [];
+        columnThreeRNGArray = [];
+        winningArray = [];
+        nextIconGen();  
+    } else {
+        console.log('Wrong Answer');
+        roundNumber++;
+        columnOneRNGArray = [];
+        columnTwoRNGArray = [];
+        columnThreeRNGArray = [];
+        winningArray = [];
+        nextIconGen();
+};
+};
+
+function thirdBtn () {
+    console.log("thirdBtn clicked");
+    console.log("round number :" + roundNumber);
+    if (winningArray[0] == columnThreeRNGArray[0]) {
+        console.log("You chose the correct door!");
+        roundNumber++;
+        playerScore++;
+        columnOneRNGArray = [];
+        columnTwoRNGArray = [];
+        columnThreeRNGArray = [];
+        winningArray = [];
+        nextIconGen();  
+    } else {
+        console.log('Wrong Answer');
+        roundNumber++;
+        columnOneRNGArray = [];
+        columnTwoRNGArray = [];
+        columnThreeRNGArray = [];
+        winningArray = [];
+        nextIconGen();
+};
+};
+
+// function iconColumnGenRNGThreeTest () {
+
+// for(i=0; i<roundNumber; i++) {
+
+// winningArray.push(emojiArray[i]);
+
+// var iconPieceThree = document.createElement('div');
+// iconPieceThree.setAttribute('id', 'columnThree' + i + 'piece');
+// iconPieceThree.innerHTML = emojiArray[i];
+// columnThreeRNGArray.push(emojiArray[i]);
+// console.log(columnThreeRNGArray);
+// iconPieceThree.style.fontSize = "30px";
+// iconColumnThree.appendChild(iconPieceThree);
+
+// };
+// };
+
+
+// function testTheArray () {
+
+//     // console.log(columnThreeRNGArray);
+
+//     if (emojiArray[0] == columnThreeRNGArray[0]) {
+//         console.log("they are equal");
+//     }
+// }
+// testing
+// iconColumnGenRNGThreeTest(); 
+// testTheArray();
+
+nextIconGen();
+// timerCounter();
+
+// rough draft
+// iconColumnGen();
+// iconColumnGenRNG();
+</script>
+</div>
+	</body>
+</html>

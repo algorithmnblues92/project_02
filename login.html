@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Login</title>
+        <!-- the form awesome library is used to add icons to our form -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <!-- include the stylesheet file -->
+        <link href="/style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+  
+  <nav>
+   <div id="logoContainer">
+    Door Game
+   </div>
+   <div id="middleSpace">
+   </div>
+   <div id="linksContainer"></div>
+  </nav>
+
+		<div class="login">
+			<h1>Login</h1>
+			<form action="/auth" method="post">
+				<!-- <label for="username">
+					font awesome icon -->
+					<!-- <i class="fas fa-user"></i>
+				</label>  -->
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<!-- <label for="password">
+					<i class="fas fa-lock"></i>
+				</label> -->
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				<input type="submit" value="Login">
+			</form>
+
+   <div id="signUpLink">or
+    <button id="signUpBtn" onClick="signUpClick()">Sign Up</button>
+   </div>
+
+		</div>
+
+  <div id="signUpContainer">
+
+   <div id="signUpBox">
+    <div id="signUpTitle">
+     <div id="topTitle">Sign Up</div>
+    </div>
+
+    <form id="signUpForm" action="/signup" method="post">
+     <!-- <label for="username">
+      <i class="fas fa-user"></i>
+     </label> -->
+     <input type="text" name="signUpUsername" placeholder="Username" id="signUpUsername" required>
+     <!-- <label for="password">
+      <i class="fas fa-lock"></i>
+     </label> -->
+     <input type="password" name="signUpPassword" placeholder="Password" id="signUpPassword" required>
+     <input type="email" name="signUpEmail" placeholder="email" id="signUpEmail" required>
+     <input id="submitSignUp" type="submit" value="Sign Up">
+    </form>
+
+   </div>
+
+  </div>
+  
+
+  <!-- <div id="signUpContainer">
+   <div id="signUpBox">
+    <div id="signUpTitle">
+     <div id="topTitle">Sign Up</div>
+    </div>
+     <div id="loginInputContainer">
+      <textarea id="usernameSignUpField" placeholder="Username"></textarea>
+      <textarea id="passwordSignUpField" placeholder="Password"></textarea>
+     </div>
+     <button id="signUpSubmit">Sign Up</button>
+
+   </div>
+  </div> -->
+
+  <script>
+
+  function signUpClick() {
+  console.log('sign up clicked');
+  signUpFunc = document.getElementById('signUpContainer');
+  signUpFunc.style.display = 'flex';
+  document.querySelector('.login').style.display = 'none';
+  };
+
+
+</script>
+	</body>
+</html>

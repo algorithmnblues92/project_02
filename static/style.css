@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Hanalei&family=Monoton&family=Righteous&family=Shadows+Into+Light&family=Shrikhand&family=Vast+Shadow&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+}
+body {
+    background-color: springgreen;
+}
+
+
+nav {
+ display: flex;
+ flex-direction: row;
+ width: 100%;
+ height: 75px;
+ background-color: skyblue;
+}
+
+
+#logoContainer {
+ width: 20%;
+ height: 75px;
+ background-color: dodgerblue;
+ font-size: 50px;
+ font-family: "Black Ops One";
+}
+
+#middleSpace {
+ width: 50%;
+ height: 75px;
+ background-color: dodgerblue;
+ font-size: 50px;
+ font-family: "Righteous";
+}
+
+#linksContainer {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ width: 30%;
+ height: 75px;
+ background-color: dodgerblue;
+ font-size: 30px;
+}
+
+#logoutBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    background-color: dodgerblue;
+    font-family: "Black Ops One";
+}
+
+#signUpLink {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+
+#signUpBtn {
+ width: 100px;
+ height: 30px;
+ margin: 20px;
+ font-size: 20px;
+ background-color: dodgerblue;
+ color: white;
+ border: none;
+ border-radius: 0.5rem;
+ font-family: 'Arial', bold;
+}
+
+
+.login {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+ border-radius: 1rem;
+}
+.login h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #3274d6;
+    color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.login form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+   margin-top: 20px;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+  background-color: #2868c7;
+    transition: background-color 0.2s;
+}
+
+#signUpContainer {
+ /* display: flex; */
+ display: none;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ margin-top: 100px;
+}
+
+#signUpBox {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 400px;
+ height: 400px;
+ background-color: white;
+ border-bottom: 2px, solid, gray;
+ border-radius: 1rem;
+}
+
+#signUpTitle {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 400px;
+ border-bottom: 1px solid lightgrey;
+}
+
+#topTitle {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 200px;
+ margin: 20px;
+ font-size: 30px;
+ font-family: Arial, Helvetica, sans-serif, Bold;
+}
+
+#signUpForm {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 400px;
+}
+
+#signUpUsername {
+ width: 80%;
+ height: 50px;
+ margin-top: 40px;
+ margin-bottom: 20px;
+}
+
+#signUpPassword {
+ width: 80%;
+ height: 50px;
+ margin-bottom: 20px;
+}
+
+#signUpEmail {
+ width: 80%;
+ height: 50px;
+ margin-bottom: 20px;
+}
+
+#submitSignUp {
+    width: 100%;
+    height: 50px;
+    background-color:#3274d6;
+    border: none;
+    color: white;
+    font-family: Arial, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#mainBodyContainer {
+ display: flex;
+ flex-direction: column;
+ /* justify-content: center; */
+ align-items: center;
+ width: 100%;
+ height: 1000px;
+ background-color: springgreen;
+}
+
+#gameWindow {
+  display: flex;
+ flex-direction: column;
+ align-items: center;
+ width: 90%;
+ height: 900px;
+
+}
+
+#doorsContainer {
+ display: flex;
+ flex-direction: row;
+ width: 75%;
+ height: 350px;
+}
+
+#doorOneContainer {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 22%;
+ margin: 20px;
+ margin-left: 120px;
+ background-color: aqua;
+}
+
+#doorTwoContainer {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 22%;
+ margin: 20px;
+ background-color: aqua;
+}
+
+#doorThreeContainer {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 22%;
+ margin: 20px;
+ background-color: aqua;
+}
+
+#doorOne {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    border-radius: 1rem;
+}
+
+#doorTwo {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    border-radius: 1rem;
+}
+
+#doorThree {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    border-radius: 1rem;
+}
+
+#iconContainer {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    width: 95%;
+    height: 350px;
+}
+
+#timerNextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    height: 350px;
+    margin-right: 20px;
+    background-color: skyblue;
+    border-radius: 1rem;
+}
+
+#nextIconContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    background-color: dodgerblue;
+    border-radius: 1rem;
+}
+
+#timerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: dodgerblue;
+    font-size: 30px;
+    border-radius: 1rem;
+}
+
+
+#iconOneContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 19%;
+    height: 350px;
+    background-color: skyblue;
+    border-radius: 1rem;
+}
+
+#iconTwoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 19%;
+    height: 350px;
+    margin: 40px;
+    background-color: skyblue;
+    border-radius: 1rem;
+}
+
+#iconThreeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 19%;
+    height: 350px;
+    background-color: skyblue;
+    border-radius: 1rem;
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100px;
+}
+
+#btnOne {
+    width: 200px;
+    height: 50px;
+    margin-left: -100px;
+    margin-right: 100px;
+    background-color: lightgray;
+    border-radius: 1rem;
+}
+
+#btnTwo {
+    width: 200px;
+    height: 50px;
+    margin-left: 50px;
+    margin-right: 150px;
+    background-color: lightgray;
+    border-radius: 1rem;
+}
+
+#btnThree {
+    width: 200px;
+    height: 50px;
+    background-color: lightgray;
+    border-radius: 1rem;
+}
